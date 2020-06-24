@@ -1,0 +1,36 @@
+<h2>{{ getTitle() }}</h2>
+<ul>
+  <li *ngFor="let course of courses">
+    {{ course }}
+  </li>
+</ul>
+<!--string interpolation-->
+<img src="{{ imageUrl }}" />
+<!-- (dom) property binding-->
+<img [src]="imageUrl" />
+<table>
+  <tr>
+    <!-- (html) atrribute binding -->
+    <td [attr.colspan]="colSpan"></td>
+  </tr>
+</table>
+<!-- class binding -->
+<button class="btn btn-primary" [class.active]="isActive">
+  class
+</button>
+<!-- style binding -->
+<button class="btn" [style.backgroundColor]="isActive ? 'green' : 'red'">
+  style
+</button>
+<!-- event binding -->
+<div (click)="onDivClicked()">
+  <button class="btn btn-primary" (click)="onSave($event)">Event</button>
+</div>
+<!-- two way binding -->
+<input [value]="email" (keyup.enter)="email = $event.target.value; onKeyUp()" />
+<input [(ngModel)]="email" (keyup.enter)="onKeyUp()" />
+
+<!-- custom pipe summmary -->
+<p>
+  {{ text | summary: 100 }}
+</p>
